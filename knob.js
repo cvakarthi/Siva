@@ -46,31 +46,15 @@ var gotPermission = function(result)
         }
         console.log('Found device: ' + devices[0].handle);
         powerMateDevice = devices[0];
-        usb.interruptTransfer(powerMateDevice, transfer, onEvent);
+        //usb.interruptTransfer(powerMateDevice, transfer, onEvent);
      }
     );
 };
-
-var ondevfound = function(devices)
-   {
-        if (!devices || !devices.length) 
-        {
-          console.log('device not found');
-          return;
-        }
-        console.log('Found device: ' + devices[0].handle);
-        powerMateDevice = devices[0];
-        usb.interruptTransfer(powerMateDevice, transfer, onEvent);
-     }
-     
-     
+        
 var permissionObj = {permissions: [{'usbDevices': [DEVICE_INFO] }]};
 
 requestButton.addEventListener('click', function()
-{
-  console.log('HEY');
-  usb.findDevices( DEVICE_INFO,ondevfound);
-  
+{ 
   chrome.permissions.request( permissionObj, function(result)
   {
     if (result) 
