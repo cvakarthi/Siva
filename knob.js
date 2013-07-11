@@ -76,6 +76,10 @@ chrome.permissions.contains( permissionObj, function(result)
   {
     gotPermission();
   }
+  else 
+  {
+    console.log('USB permission failed');
+  }
 }
 );
 
