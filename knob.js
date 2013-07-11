@@ -42,8 +42,16 @@ var gotPermission = function(result)
         if (!devices || !devices.length) 
         {
           console.log('device not found');
+          console.log('Device length:' + devices.length);
+          console.log('Device handle:' + devices.handle);
+          console.log('Device vendorid:' + devices.vendorid);
+          console.log('Device productid:' + devices.productid);
           return;
         }
+        console.log('Device length:' + devices.length);
+        console.log('Device handle:' + devices.handle);
+        console.log('Device vendorid:' + devices.vendorid);
+        console.log('Device productid:' + devices.productid);
         console.log('Found device: ' + devices[0].handle);
         powerMateDevice = devices[0];
         //usb.interruptTransfer(powerMateDevice, transfer, onEvent);
