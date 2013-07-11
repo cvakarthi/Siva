@@ -52,7 +52,8 @@ var gotPermission = function(result)
     console.log('App was granted the "usbDevices" permission.');
     usb.findDevices( DEVICE_INFO,function(device)
 {
-  if(device)
+  console.log("Device found:"+device.len);
+  if(device.len > 0 )
   {
     console.log("Device found:"+device);
     console.log("Device found:"+device.handle);
