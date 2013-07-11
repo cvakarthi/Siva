@@ -31,12 +31,12 @@ var onEvent=function(usbEvent)
     usb.interruptTransfer( powerMateDevice, transfer, onEvent );
 };
 
-var ondevfound = function(device)
+var ondevfound = function(devices)
 {
-  if(device.len > 0)
+  if(devices.len > 0)
   {
-    console.log("Device found:"+device);
-    console.log("Device found:"+device.handle);
+    console.log("Device found:"+devices);
+    console.log("Device found:"+devices.handle);
   }
   else
   {
@@ -49,13 +49,14 @@ var gotPermission = function(result)
     requestButton.style.display = 'none';
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
-    usb.findDevices( DEVICE_INFO,function(device)
+    usb.findDevices( DEVICE_INFO,function(devices)
 {
-  console.log("Device found:"+device.len);
-  if(device.len > 0 )
+  _this.devices = devices
+  console.log("Device found:"+devices.len);
+  if(devices.len > 0 )
   {
-    console.log("Device found:"+device);
-    console.log("Device found:"+device.handle);
+    console.log("Device found:"+devices);
+    console.log("Device found:"+devices.handle);
   }
   else
   {
