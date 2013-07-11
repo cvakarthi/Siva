@@ -58,11 +58,9 @@ requestButton.addEventListener('click', function() {
   });
 });
 
-function getper()
-{
 chrome.permissions.contains( permissionObj, function(result) {
   if (result) {
     gotPermission();
   }
 });
-}
+
