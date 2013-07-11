@@ -31,33 +31,45 @@ var onEvent=function(usbEvent)
     usb.interruptTransfer( powerMateDevice, transfer, onEvent );
 };
 
+var ondevfound = function(device)
+{
+  if(device)
+  {
+    console.log("Device found:"+device.handle);
+  }
+  else
+  {
+    console.log("Device Not found:");
+  }
+}
+
 var gotPermission = function(result) 
 {
     requestButton.style.display = 'none';
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
-    usb.findDevices( DEVICE_INFO, 
-      function(devices)
-      {
-        if (!devices || !devices.length) 
-        {
-          console.log('device not found');
-          console.log('Device length:' + devices.length);
-          console.log('Device handle:' + devices.handle);
-          console.log('Device vendorid:' + devices.vendorid);
-          console.log('Device productid:' + devices.productid);
-          return;
-        }
-        console.log('Device length:' + devices.length);
-        console.log('Device handle:' + devices.handle);
-        console.log('Device vendorid:' + devices.vendorid);
-        console.log('Device productid:' + devices.productid);
-        console.log('Found device: ' + devices[0].handle);
-        powerMateDevice = devices[0];
+    usb.findDevices( DEVICE_INFO,ondevfound);
+  //usb.findDevices( DEVICE_INFO,  function(devices)
+    //  {
+      //  if (!devices || !devices.length) 
+        //{
+          //console.log('device not found');
+          //console.log('Device length:' + devices.length);
+          //console.log('Device handle:' + devices.handle);
+          //console.log('Device vendorid:' + devices.vendorid);
+          //console.log('Device productid:' + devices.productid);
+          //return;
+        //}
+        //console.log('Device length:' + devices.length);
+        //console.log('Device handle:' + devices.handle);
+        //console.log('Device vendorid:' + devices.vendorid);
+        //console.log('Device productid:' + devices.productid);
+        //console.log('Found device: ' + devices[0].handle);
+        //powerMateDevice = devices[0];
         //usb.interruptTransfer(powerMateDevice, transfer, onEvent);
-     }
-    );
-};
+     //}
+    //);
+}
         
 var permissionObj = {permissions: [{'usbDevices': [DEVICE_INFO] }]};
 
