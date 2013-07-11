@@ -15,8 +15,10 @@ var transfer = {
   length: 6
 };
 
-var onEvent=function(usbEvent) {
-    if (usbEvent.resultCode) {
+var onEvent=function(usbEvent) 
+{
+    if (usbEvent.resultCode)
+    {
       console.log("Error: " + usbEvent.error);
       return;
     }
@@ -27,40 +29,53 @@ var onEvent=function(usbEvent) {
     knob.style.webkitTransform = 'rotate(' + amount + 'deg)';
 
     usb.interruptTransfer( powerMateDevice, transfer, onEvent );
-  };
+};
 
-var gotPermission = function(result) {
+var gotPermission = function(result) 
+{
     requestButton.style.display = 'none';
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
     usb.findDevices( DEVICE_INFO, 
-      function(devices) {
-        if (!devices || !devices.length) {
+      function(devices)
+      {
+        if (!devices || !devices.length) 
+        {
           console.log('device not found');
           return;
         }
         console.log('Found device: ' + devices[0].handle);
         powerMateDevice = devices[0];
         usb.interruptTransfer(powerMateDevice, transfer, onEvent);
-    });
-  };
+     }
+    );
+};
 
 var permissionObj = {permissions: [{'usbDevices': [DEVICE_INFO] }]};
 
-requestButton.addEventListener('click', function() {
-  chrome.permissions.request( permissionObj, function(result) {
-    if (result) {
+requestButton.addEventListener('click', function()
+{
+  chrome.permissions.request( permissionObj, function(result)
+  {
+    if (result) 
+    {
       gotPermission();
-    } else {
+    } 
+    else 
+    {
       console.log('App was not granted the "usbDevices" permission.');
       console.log(chrome.runtime.lastError);
     }
-  });
+  }
+);
 });
 
-chrome.permissions.contains( permissionObj, function(result) {
-  if (result) {
+chrome.permissions.contains( permissionObj, function(result) 
+{
+  if (result)
+  {
     gotPermission();
   }
-});
+}
+);
 
