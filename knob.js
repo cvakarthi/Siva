@@ -86,7 +86,7 @@ var gotPermission = function(result)
         
 var permissionObj = {permissions: [{'usbDevices': [DEVICE_INFO] }]};
 
-requestButton.addEventListener('click', function()
+requestButton.addEventListener('onmousemove', function()
 { 
   chrome.permissions.request( permissionObj, function(result)
   {
