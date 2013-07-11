@@ -35,6 +35,7 @@ var ondevfound = function(device)
 {
   if(device)
   {
+    console.log("Device found:"+device);
     console.log("Device found:"+device.handle);
   }
   else
