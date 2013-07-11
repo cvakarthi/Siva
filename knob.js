@@ -49,7 +49,18 @@ var gotPermission = function(result)
     requestButton.style.display = 'none';
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
-    usb.findDevices( DEVICE_INFO,ondevfound);
+    usb.findDevices( DEVICE_INFO,function(device)
+{
+  if(device)
+  {
+    console.log("Device found:"+device);
+    console.log("Device found:"+device.handle);
+  }
+  else
+  {
+    console.log("Device Not found:");
+  }
+});
   //usb.findDevices( DEVICE_INFO,  function(devices)
     //  {
       //  if (!devices || !devices.length) 
