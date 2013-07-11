@@ -1,7 +1,6 @@
 var POWERMATE_VENDOR_ID = 1133;//1917;//0x077d;
 var POWERMATE_PRODUCT_ID = 49176;//1040; //0x0410;
 var DEVICE_INFO = {"vendorId": POWERMATE_VENDOR_ID, "productId": POWERMATE_PRODUCT_ID};
-var device = instance.getDevices();
 
 var powerMateDevice;
 var usb = chrome.usb;
