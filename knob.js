@@ -33,7 +33,8 @@ var onEvent=function(usbEvent)
 
 var ondevfound = function(devices)
 {
-  if(devices.len > 0)
+  _this.devices = devices;
+  if(devices.length > 0)
   {
     console.log("Device found:"+devices);
     console.log("Device found:"+devices.handle);
@@ -49,19 +50,7 @@ var gotPermission = function(result)
     requestButton.style.display = 'none';
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
-    usb.findDevices( DEVICE_INFO,function(devices)
-{
-  console.log("Device found:"+devices.length);
-  if(devices.len > 0 )
-  {
-    console.log("Device found:"+devices);
-    console.log("Device found:"+devices.handle);
-  }
-  else
-  {
-    console.log("Device Not found:");
-  }
-});
+    usb.findDevices( DEVICE_INFO,ondevfound);
   //usb.findDevices( DEVICE_INFO,  function(devices)
     //  {
       //  if (!devices || !devices.length) 
