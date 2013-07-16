@@ -106,11 +106,31 @@ requestButton.addEventListener('click', function()
 );
 });
 
+    
+    
+    var onDeviceFound = function(device) {
+  _this.device=device;
+  if (device) {
+     console.log("Device found: "+device.handle);
+  } else {
+     console.log("Device could not be found");
+  }
+};
+
+var onUsbEvent = function(event) {
+     console.log("Got some message from the USB device!");
+};
+
 chrome.permissions.contains( permissionObj, function(result) 
 {
   if (result)
   {
-    gotPermission();
+
+
+chrome.usb.findDevice(vendorId, productId, {"onEvent": onUsbEvent}, onDeviceFound);
+    
+    
+    
   }
   else 
   {
