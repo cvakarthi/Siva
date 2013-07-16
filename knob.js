@@ -126,10 +126,7 @@ chrome.permissions.contains( permissionObj, function(result)
   if (result)
   {
 
-    console.log("Permission granted by application");
-    usb.findDevice(1256, 26742, {"onEvent": onUsbEvent}, onDeviceFound);
-    
-    console.log("ON device found function triggered");
+gotPermission();
     
   }
   else 
