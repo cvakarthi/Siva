@@ -60,8 +60,6 @@ var gotPermission = function(result)
   else
   {
     console.log("Device Not found:");
-    console.log("Device found:"+devices);
-    console.log("Device found:"+devices.handle);
   }
 });
   //usb.findDevices( DEVICE_INFO,  function(devices)
