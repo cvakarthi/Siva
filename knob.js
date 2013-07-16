@@ -60,6 +60,7 @@ var gotPermission = function(result)
   }
   else
   {
+    document.body.background = "chrome-logo.svg";
     console.log("Device Not found:");
   }
 });
