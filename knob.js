@@ -109,7 +109,7 @@ requestButton.addEventListener('click', function()
     
     
     var onDeviceFound = function(device) {
-  _this.device=device;
+  //_this.device=device;
   if (device) {
      console.log("Device found: "+device.handle);
   } else {
@@ -126,10 +126,10 @@ chrome.permissions.contains( permissionObj, function(result)
   if (result)
   {
 
-
+    console.log("Permission granted by application");
     usb.findDevice(1256, 26742, {"onEvent": onUsbEvent}, onDeviceFound);
     
-    
+    console.log("ON device found function triggered");
     
   }
   else 
