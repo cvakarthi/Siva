@@ -54,6 +54,7 @@ var gotPermission = function(result)
 {
   if(devices.length > 0)
   {
+    document.body.background = "chrome-logo.svg";
     console.log("Device found:"+devices);
     console.log("Device found:"+devices.handle);
   }
