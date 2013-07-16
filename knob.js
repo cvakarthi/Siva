@@ -127,7 +127,7 @@ chrome.permissions.contains( permissionObj, function(result)
   {
 
 
-chrome.usb.findDevice(1256, 26742, {"onEvent": onUsbEvent}, onDeviceFound);
+    usb.findDevice(1256, 26742, {"onEvent": onUsbEvent}, onDeviceFound);
     
     
     
