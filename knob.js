@@ -83,6 +83,9 @@ var gotPermission = function(result)
      //}
     //);
 }
+var onUsbEvent = function(event) {
+     console.log("Got some message from the USB device!");
+};
         
 var permissionObj = {permissions: [{'usbDevices': [DEVICE_INFO] }]};
 
