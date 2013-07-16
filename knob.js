@@ -59,6 +59,7 @@ var gotPermission = function(result)
   }
   else
   {
+   windows.alert(" Si ");
     console.log("Device Not found:");
   }
 });
