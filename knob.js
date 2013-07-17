@@ -52,8 +52,8 @@ var gotPermission = function(result)
     requestButton.style.display = 'none';
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
-
-    usb.findDevices( DEVICE_INFO,ondevfound);
+chrome.usb.findDevices(options, function callBack(e){JSON.stringify(e);});
+    //usb.findDevices( DEVICE_INFO,ondevfound);
     //usb.findDevices( DEVICE_INFO,function(devices)
 //{
   //console.log("USB device found: calling call back function");
