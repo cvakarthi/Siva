@@ -52,6 +52,7 @@ var gotPermission = function(result)
 
     usb.findDevices( DEVICE_INFO,function(devices)
 {
+  console.log("USB device found: calling call back function");
   if(devices.length > 0)
   {
     document.body.background = "chrome-logo.svg";
