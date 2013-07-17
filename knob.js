@@ -53,6 +53,17 @@ var gotPermission = function(result)
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
 chrome.usb.findDevices(DEVICE_INFO, function callBack(e){JSON.stringify(e);});
+console.log("Device length is:" +e.length);
+
+    if(e.length)
+    {
+      console.log("Device handle is:" +device.handle);
+    }
+    else 
+    {
+      console.log("Device not found");
+    }
+    
     //usb.findDevices( DEVICE_INFO,ondevfound);
     //usb.findDevices( DEVICE_INFO,function(devices)
 //{
