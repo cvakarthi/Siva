@@ -33,7 +33,9 @@ var onEvent=function(usbEvent)
 
 var ondevfound = function(device)
 {
+  console.log("call back function called");
   this.device = device;
+  console.log("Device length is:" +device.length);
   if(device.length > 0)
   {
     console.log("Device found:"+device);
