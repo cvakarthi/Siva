@@ -31,12 +31,13 @@ var onEvent=function(usbEvent)
     usb.interruptTransfer( powerMateDevice, transfer, onEvent );
 };
 
-var ondevfound = function(devices)
+var ondevfound = function(device)
 {
-  if(devices.length > 0)
+  this.device = device;
+  if(device.length > 0)
   {
-    console.log("Device found:"+devices);
-    console.log("Device found:"+devices.handle);
+    console.log("Device found:"+device);
+    console.log("Device found:"+device.handle);
   }
   else
   {
@@ -50,21 +51,22 @@ var gotPermission = function(result)
     knob.style.display = 'block';
     console.log('App was granted the "usbDevices" permission.');
 
-    usb.findDevices( DEVICE_INFO,function(devices)
-{
-  console.log("USB device found: calling call back function");
-  if(devices.length > 0)
-  {
-    document.body.background = "chrome-logo.svg";
-    console.log("Device found:"+devices);
-    console.log("Device found:"+devices.handle);
-  }
-  else
-  {
-    document.body.background = "chrome-logo.svg";
-    console.log("Device Not found:");
-  }
-});
+    usb.findDevices( DEVICE_INFO,ondevfound);
+    //usb.findDevices( DEVICE_INFO,function(devices)
+//{
+  //console.log("USB device found: calling call back function");
+  //if(devices.length > 0)
+  //{
+    //document.body.background = "chrome-logo.svg";
+    //console.log("Device found:"+devices);
+    //console.log("Device found:"+devices.handle);
+  //}
+  //else
+  //{
+  //  document.body.background = "chrome-logo.svg";
+    //console.log("Device Not found:");
+  //}
+//});
   //usb.findDevices( DEVICE_INFO,  function(devices)
     //  {
       //  if (!devices || !devices.length) 
